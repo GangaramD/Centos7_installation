@@ -1,7 +1,17 @@
 
 # Jenkins on centos:
 
-  	    $ curl --silent --location http://pkg.jenkins-ci.org/redhat-stable/jenkins.repo | sudo tee /etc/yum.repos.d/jenkins.repo
+Java on Centos RHEL7:
+
+	  $ sudo yum install java-1.8.0-openjdk-devel
+
+	  $ java -version
+
+	  $ sudo yum remove java-1.8.0-openjdk-devel
+
+ Jenkins:
+	   
+	   $ curl --silent --location http://pkg.jenkins-ci.org/redhat-stable/jenkins.repo | sudo tee /etc/yum.repos.d/jenkins.repo
 	  
 	      $ sudo rpm --import https://jenkins-ci.org/redhat/jenkins-ci.org.key
 	  
