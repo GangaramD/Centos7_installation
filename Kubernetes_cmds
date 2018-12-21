@@ -1,0 +1,45 @@
+#Basic cmds
+$kubectl get nodes
+$kubectl describe <node_name>	
+
+#Creating a deployment
+$kubectl create -f deplpoymnet.yml
+
+#Check deploymnet;
+$kubectl get deployments
+$kubectl descibe deployment <deployment_name>
+
+#To get the deployment file from which the deployment is created 
+$ kubectl get deploymnet <deploymnet_name> -o yaml ( -o is for output)
+
+#If we want to deploy the particular images for the deployment when a developer has a new image
+$kubectl set image deployment/nginx-deployment nginx=nginx=1.8   -----nginx-deploymnet={deploymnet_name which we create in the file}
+
+#To check the rolling update applied from previous cmd
+$kubectl rollout status deploymnet/nginx-deployment
+
+#To check history of the Rollout if went correct or not.
+$kubectl rollout history deployment/nginx-deployment --revision=3  ( revision:The time we deployed the script ) If we see rollout failed
+                                                                     then we can edit the deploymnet file and apply the changes once again.)
+
+#Config maps are used to store the Application related environmnet varaible in the key and value pairs
+$ kubectl create configmap my-map --from-literal=name=ram  ( This will create config map by name my-map and will store the data name=ram 
+                                                             value in it)
+$ kubectl get configmap      (will display the value stored in the file ex: Name: my-config 
+                                                                            namespace:default
+                                                                            label: none
+                                                                            Data:
+                                                                               name:ram)
+#To get the config map yaml file which are present in the server
+$ kubectl get configmap my-app -o yaml
+
+
+#logs of the kubernetes pod
+$ kubectl logs <pod_name>  ( Ex: $kubectl logs nginx_map)
+
+# Increase replica values using the cmd
+$kubectl scale deployment/nginx-deployment --replicas=3     ( it will increase the replica to 3)
+
+#Delete a pod 
+$kubectl get pods
+$ kubectl delete pod nginx-deploymnent-h67887-hjh78
